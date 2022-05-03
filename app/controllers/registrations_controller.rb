@@ -5,8 +5,10 @@ class RegistrationsController < ApplicationController
     def create
         @user= User.new(user_params)
         if @user.save
-            render json: "Created"
+            # flash.now[:notice]= "Successfully Logined"
+            redirect_to "/logined"
         else
+            flash[:alert]= "Something went wrong"
             render :new
         end
     end
