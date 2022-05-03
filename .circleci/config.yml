@@ -20,9 +20,19 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:2.7.6
+    steps:
+      - checkout
+      - run:
+          name: "Docker Ruby Image"
+          command: | 
+              "echo This is the delivery pipeline!"  
+              docker build -t pizzaiolodocker/devtest:$TAG . 
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker push pizzaiolodocker/devtest:$TAG
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - build
