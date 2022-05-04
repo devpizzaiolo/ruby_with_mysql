@@ -1,6 +1,17 @@
 # syntax=docker/dockerfile:1
 FROM ruby:2.7.6
-RUN apt-get update -qq && apt-get install -y nodejs mysql-client
+#RUN apt-get update -qq && apt-get install -y nodejs mysql-client
+
+# Install dependencies
+RUN apt-get update && apt-get install -qq -y build-essential nodejs npm && apt-get install -qq -y zip
+
+# Create app directory
+ENV RAILS_ENV=development
+RUN mkdir -p /myapp
+RUN mkdir -p log
+RUN touch $RAILS_ENV.log
+
+
 WORKDIR /myapp
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
