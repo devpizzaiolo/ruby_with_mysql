@@ -27,6 +27,7 @@ jobs:
           command: |
             echo "This is the delivery pipeline!"  
             if [ "${CIRCLE_BRANCH}" == "production" ] || [ "${CIRCLE_BRANCH}" == "staging" ]  || [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "staging3" ] || [ "${CIRCLE_BRANCH}" == "main" ]; then  
+              TAG=$CIRCLE_BUILD_NUM
               docker build -t pizzaiolodocker/ruby-mysql:$TAG . 
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker push pizzaiolodocker/ruby-mysql:$TAG
