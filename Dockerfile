@@ -17,6 +17,7 @@ COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 RUN gem install bundler:2.3.12
 RUN gem install mysql2 --platform=ruby -- --with-mysql-lib="C:\wamp64\bin\mysql\mysql8.0.18"
+RUN gem install strscan
 RUN bundle install
 
 # Add a script to be executed every time the container starts.
