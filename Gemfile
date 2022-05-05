@@ -76,3 +76,6 @@ end
 gem 'bootstrap'
 # Use SCSS for stylesheets
 gem 'sass-rails'
+
+# strscan
+gem 'strscan'
