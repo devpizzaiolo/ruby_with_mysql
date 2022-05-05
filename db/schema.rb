@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_03_110537) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_01_112316) do
   create_table "users", id: :integer, charset: "latin1", options: "ENGINE=MyISAM", force: :cascade do |t|
     t.string "name"
-    t.string "password"
-    t.string "email"
+    t.text "password_digest"
   end
 
 end
